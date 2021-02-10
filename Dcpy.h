@@ -1,23 +1,23 @@
-#pragma once
+ï»¿#pragma once
 #include "Dcpyc.h"
 #include "Dcpyd.h"
 
 
-// CDcpy ¶Ô»°¿ò
+// CDcpy å¯¹è¯æ¡†
 
 class CDcpy : public CDialogEx
 {
 	DECLARE_DYNAMIC(CDcpy)
 
 public:
-	CDcpy(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDcpy(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDcpy();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = ID_DCPY };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:
