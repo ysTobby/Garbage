@@ -1,4 +1,4 @@
-// Cpy.cpp : ÊµÏÖÎÄ¼ş
+// Cpy.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -7,7 +7,7 @@
 #include "afxdialogex.h"
 
 
-// Cpy ¶Ô»°¿ò
+// Cpy å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(Cpy, CDialogEx)
 
@@ -33,13 +33,13 @@ BEGIN_MESSAGE_MAP(Cpy, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// Cpy ÏûÏ¢´¦Àí³ÌĞò
+// Cpy æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 
 void Cpy::OnOK()
 {
-	// TODO: ÔÚ´ËÌí¼Ó×¨ÓÃ´úÂëºÍ/»òµ÷ÓÃ»ùÀà
-	MessageBox(_T("ÇëÊäÈë±ØÒª²ÎÊı"));
+	// TODO: åœ¨æ­¤æ·»åŠ ä¸“ç”¨ä»£ç å’Œ/æˆ–è°ƒç”¨åŸºç±»
+	MessageBox(_T("è¯·è¾“å…¥å¿…è¦å‚æ•°"));
 	//CDialogEx::OnOK();
 }
 
@@ -48,17 +48,17 @@ BOOL Cpy::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	m_tab.InsertItem(0,_T("ÒÑÖªÊÜÑ¹¸Ö½îÃæ»ıµÄÆ«ĞÄÊÜÑ¹¹¹¼şÉè¼Æ"),0);
-	m_tab.InsertItem(1,_T("Î´ÖªÊÜÑ¹¸Ö½îÃæ»ıµÄÆ«ĞÄÊÜÑ¹¹¹¼şÉè¼Æ"),1);
+	m_tab.InsertItem(0,_T("å·²çŸ¥å—å‹é’¢ç­‹é¢ç§¯çš„åå¿ƒå—å‹æ„ä»¶è®¾è®¡"),0);
+	m_tab.InsertItem(1,_T("æœªçŸ¥å—å‹é’¢ç­‹é¢ç§¯çš„åå¿ƒå—å‹æ„ä»¶è®¾è®¡"),1);
 
-	pyd1Dlg.Create(IDD_PYD1,&m_tab);//´Ë´¦×¢ÒâÒª¸ü¸Ä³É¶ÔÓ¦¶Ô»°¿òµÄID
+	pyd1Dlg.Create(IDD_PYD1,&m_tab);//æ­¤å¤„æ³¨æ„è¦æ›´æ”¹æˆå¯¹åº”å¯¹è¯æ¡†çš„ID
 	pyd2Dlg.Create(IDD_PYD2,&m_tab);
 
 	pyd1Dlg.CenterWindow();
 	pyd1Dlg.ShowWindow(SW_SHOW);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 

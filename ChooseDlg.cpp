@@ -1,4 +1,4 @@
-// ChooseDlg.cpp : ÊµÏÖÎÄ¼þ
+// ChooseDlg.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -15,7 +15,7 @@
 #include "EJXY.h"
 
 
-// CChooseDlg ¶Ô»°¿ò
+// CChooseDlg å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CChooseDlg, CDialogEx)
 
@@ -49,12 +49,12 @@ BEGIN_MESSAGE_MAP(CChooseDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// CChooseDlg ÏûÏ¢´¦Àí³ÌÐò
+// CChooseDlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 
 void CChooseDlg::OnBnClickedCancel()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	
 	this->EndDialog(0);
 }
@@ -62,7 +62,7 @@ void CChooseDlg::OnBnClickedCancel()
 
 void CChooseDlg::OnBnClickedSbdc()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	Csb m_sb;
 	m_sb.DoModal();
 }
@@ -72,13 +72,13 @@ void CChooseDlg::OnBnClickedDbdc()
 {
 	Cdb m_db;
 	m_db.DoModal();
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 }
 
 
 void CChooseDlg::OnBnClickedDbdc2()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	Ctb m_tb;
 	m_tb.DoModal();
 }
@@ -121,7 +121,6 @@ void CChooseDlg::OnBnClickedSbdc5()
 
 void CChooseDlg::OnBnClickedSbdc6()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
 	Cpyc m_pyc;
 	m_pyc.DoModal();
 }

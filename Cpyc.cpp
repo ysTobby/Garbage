@@ -1,13 +1,14 @@
-// Cpyc.cpp : ÊµÏÖÎÄ¼þ
+ï»¿// Cpyc.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "stdafx.h"
 #include "peijin.h"
 #include "Cpyc.h"
 #include "afxdialogex.h"
+#include "OperateWord.h"
 
 
-// Cpyc ¶Ô»°¿ò
+// Cpyc å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(Cpyc, CDialogEx)
 
@@ -69,12 +70,12 @@ BEGIN_MESSAGE_MAP(Cpyc, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// Cpyc ÏûÏ¢´¦Àí³ÌÐò
+// Cpyc æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 
 void Cpyc::OnBnClickedOk()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	//CDialogEx::OnOK();
 	OnBnClickedButtoncal();
 }
@@ -94,7 +95,7 @@ void Cpyc::reset()
 
 void Cpyc::OnBnClickedButtoncal()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CWnd::UpdateData(true);
 	reset();
 	GetDlgItem(IDC_BUTTON_export)->EnableWindow(FALSE);
@@ -105,14 +106,14 @@ void Cpyc::OnBnClickedButtoncal()
 	m_Nb = info.a1*info.cp*m_B*h0*info.kb + info.ss*m_SAsp - info.ss*m_SAs;
 	if (m_N <= m_Nb)
 	{
-		//´óÆ«Ñ¹
-		m_PYT = _T("´óÆ«Ñ¹");
+		//å¤§ååŽ‹
+		m_PYT = _T("å¤§ååŽ‹");
 		x = (m_N-info.ss*m_SAsp+info.ss*m_SAs) / (info.a1*info.cp*m_B);
 		tempkesai = x / h0;
 		if (tempkesai>2*m_as/h0)
 		{
-			//Êä³öÊý¾Ý£¨1£©£¬£¨2£©£¬£¨3£©£¬£¨5£©£¬£¨6£©£¬£¨7£©£¬£¨9£©£»
-			//Êä³ö¼ÆËãÊé£¨¼ÆËãÊéÎÄ¼þÃûDPA-FH-ZC£©
+			//è¾“å‡ºæ•°æ®ï¼ˆ1ï¼‰ï¼Œï¼ˆ2ï¼‰ï¼Œï¼ˆ3ï¼‰ï¼Œï¼ˆ5ï¼‰ï¼Œï¼ˆ6ï¼‰ï¼Œï¼ˆ7ï¼‰ï¼Œï¼ˆ9ï¼‰ï¼›
+			//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åDPA-FH-ZCï¼‰
 			exportcon = 1;
 			m_e = (info.a1*info.cp*m_B*pow(h0,2)*tempkesai*(1-0.5*tempkesai)+
 				info.ss*m_SAsp*(h0-m_as)) / (m_N);
@@ -124,10 +125,10 @@ void Cpyc::OnBnClickedButtoncal()
 		}
 		else
 		{
-			//Èô £¬³öÏÖÌáÊ¾Óï¡°ÊÜÑ¹¸Ö½î²»Çü·þ¡±
-			//Êä³öÊý¾ÝÊä³öÊý¾Ý£¨1£©£¬£¨2£©£¬£¨4£©£¬£¨5£©£¬£¨6£©£¬£¨7£©£¬£¨9£©
-			//Êä³ö¼ÆËãÊé£¨¼ÆËãÊéÎÄ¼þÃûDPA-FH-XX£©
-			MessageBox(_T("ÊÜÑ¹¸Ö½î²»Çü·þ"));
+			//è‹¥ ï¼Œå‡ºçŽ°æç¤ºè¯­â€œå—åŽ‹é’¢ç­‹ä¸å±ˆæœâ€
+			//è¾“å‡ºæ•°æ®è¾“å‡ºæ•°æ®ï¼ˆ1ï¼‰ï¼Œï¼ˆ2ï¼‰ï¼Œï¼ˆ4ï¼‰ï¼Œï¼ˆ5ï¼‰ï¼Œï¼ˆ6ï¼‰ï¼Œï¼ˆ7ï¼‰ï¼Œï¼ˆ9ï¼‰
+			//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åDPA-FH-XXï¼‰
+			MessageBox(_T("å—åŽ‹é’¢ç­‹ä¸å±ˆæœ"));
 			m_e = 0.0;
 			exportcon = 2;
 			m_ep = info.ss*m_SAs*(h0 - m_as)/m_N;
@@ -140,14 +141,14 @@ void Cpyc::OnBnClickedButtoncal()
 	}
 	else
 	{
-		m_PYT = _T("Ð¡Æ«Ñ¹");
+		m_PYT = _T("å°ååŽ‹");
 		m_kscy = 1.6 - info.kb;
 		tempkesai = (m_N-info.ss*m_SAsp-(0.8)/(info.kb-info.b1)*
 			info.ss*m_SAs) / (info.a1*info.cp*m_B*h0-1/(info.kb-info.b1)*info.ss*m_SAs);
 		if (tempkesai<=m_kscy)
 		{
-			//Êä³öÊý¾ÝÊä³öÊý¾Ý£¨1£©£¬£¨2£©£¬£¨3£©£¬£¨5£©£¬£¨6£©£¬£¨7£©£¬£¨9£©£¬
-			//Êä³ö¼ÆËãÊé£¨¼ÆËãÊéÎÄ¼þÃûXPA-FH-ZC£©
+			//è¾“å‡ºæ•°æ®è¾“å‡ºæ•°æ®ï¼ˆ1ï¼‰ï¼Œï¼ˆ2ï¼‰ï¼Œï¼ˆ3ï¼‰ï¼Œï¼ˆ5ï¼‰ï¼Œï¼ˆ6ï¼‰ï¼Œï¼ˆ7ï¼‰ï¼Œï¼ˆ9ï¼‰ï¼Œ
+			//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åXPA-FH-ZCï¼‰
 			exportcon = 3;
 			m_e = (info.a1*info.cp*m_B*pow(h0,2)*tempkesai*(1-0.5*tempkesai)+info.ss*m_SAsp*
 				(h0-m_as)) / (m_N);
@@ -159,8 +160,8 @@ void Cpyc::OnBnClickedButtoncal()
 		}
 		else if (tempkesai<=(m_H/h0))
 		{
-			//Êä³öÊý¾Ý£¨1£©£¬£¨2£©£¬£¨3£©£¬£¨5£©£¬£¨6£©£¬£¨7£©£¬£¨8£©£¬£¨9£©£¬
-			//ÎÞ¼ÆËãÊéÊä³ö
+			//è¾“å‡ºæ•°æ®ï¼ˆ1ï¼‰ï¼Œï¼ˆ2ï¼‰ï¼Œï¼ˆ3ï¼‰ï¼Œï¼ˆ5ï¼‰ï¼Œï¼ˆ6ï¼‰ï¼Œï¼ˆ7ï¼‰ï¼Œï¼ˆ8ï¼‰ï¼Œï¼ˆ9ï¼‰ï¼Œ
+			//æ— è®¡ç®—ä¹¦è¾“å‡º
 			m_mks = (m_N - info.ss*m_SAsp-info.ss*m_SAs) / (info.a1*info.cp*m_B*h0);
 			m_e = (info.a1*info.cp*m_B*pow(h0, 2)*m_mks*(1 - 0.5*m_mks) + info.ss*m_SAsp*
 				(h0 - m_as)) / (m_N);
@@ -171,7 +172,7 @@ void Cpyc::OnBnClickedButtoncal()
 		}
 		else
 		{
-			//Êä³öÊý¾Ý£¨1£©£¬£¨2£©£¬£¨3£©£¬£¨5£©£¬£¨6£©£¬£¨7£©£¬£¨9£©£¬ÎÞ¼ÆËãÊéÊä³ö
+			//è¾“å‡ºæ•°æ®ï¼ˆ1ï¼‰ï¼Œï¼ˆ2ï¼‰ï¼Œï¼ˆ3ï¼‰ï¼Œï¼ˆ5ï¼‰ï¼Œï¼ˆ6ï¼‰ï¼Œï¼ˆ7ï¼‰ï¼Œï¼ˆ9ï¼‰ï¼Œæ— è®¡ç®—ä¹¦è¾“å‡º
 			m_e = info.cp*m_B*m_H*(h0 - 0.5*m_H) + info.ss*m_SAsp*(h0 - m_as);
 			m_e = m_e / m_N;
 			m_ei = m_e - 0.5*m_H + m_as;
@@ -190,7 +191,147 @@ void Cpyc::OnBnClickedButtoncal()
 
 void Cpyc::OnBnClickedButtonexport()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼þÍ¨Öª´¦Àí³ÌÐò´úÂë
+	//å…¬å…±å­—ç¬¦
+	
+	CString S_b, S_h, S_n, S_Asp, S_As, S_as, S_fc, S_kb, S_fy, S_h0;
+	S_b.Format(_T("%.0lf"), m_B);
+	S_h.Format(_T("%.0lf"), m_H);
+	S_n.Format(_T("%.0lf"), m_N);
+	S_Asp.Format(_T("%.0lf"), m_SAsp);
+	S_As.Format(_T("%.0lf"), m_SAs);
+	S_as.Format(_T("%.0lf"), m_as);
+	S_fc.Format(_T("%.1lf"), info.cp);
+	S_kb.Format(_T("%.3lf"), info.kb);
+	S_fy.Format(_T("%.0lf"), info.ss);
+	S_h0.Format(_T("%.0lf"), h0);
+
+	CString S_e0, S_e, S_ea, S_ei, S_ksai, S_Mu, S_nb, S_x, S_ep, S_ksaicy;
+	S_e0.Format(_T("%.1lf"), m_e0);
+	S_e.Format(_T("%.1lf"), m_e);
+	S_ea.Format(_T("%.1lf"), m_ea);
+	S_ei.Format(_T("%.1lf"), m_ei);
+	S_ksai.Format(_T("%.3lf"), m_iks);
+	S_Mu.Format(_T("%.0lf"), m_Mu);
+	S_nb.Format(_T("%.1lf"), m_Nb);
+	S_x.Format(_T("%.0lf"), x);
+	S_ep.Format(_T("%.1lf"), m_ep);
+	S_ksaicy.Format(_T("%.3lf"), m_kscy);
+
+
+	if (exportcon == 1)
+	{
+		//--------------------------------------------------------
+		//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åDPA-FH-ZCï¼‰
+		COperateWord conword(g_exePATH, _T("\\templet\\DPY_FH_ZC.dot"));
+		if (!conword.IsSuccess())
+		{
+			AfxMessageBox(_T("æœ¬æœºæ²¡æœ‰å®‰è£…wordäº§å“ï¼"));
+			return;
+		}
+		conword.ReplaceBookmark(_T("as"), S_as, 3);
+		conword.ReplaceBookmark(_T("Asp"), S_Asp, 4);
+		conword.ReplaceBookmark(_T("Ast"), S_As, 3);
+		conword.ReplaceBookmark(_T("b"), S_b, 4);
+		conword.ReplaceBookmark(_T("CT"), m_CS, 1);
+		conword.ReplaceBookmark(_T("e0"), S_e0, 2);
+		conword.ReplaceBookmark(_T("e"), S_e, 2);
+		conword.ReplaceBookmark(_T("ea"), S_ea, 2);
+		conword.ReplaceBookmark(_T("ei"), S_ei, 2);
+		conword.ReplaceBookmark(_T("fc"), S_fc, 4);
+		conword.ReplaceBookmark(_T("fy"), S_fy, 4);
+		conword.ReplaceBookmark(_T("h0"), S_h0, 5);
+		conword.ReplaceBookmark(_T("h"), S_h, 2);
+		conword.ReplaceBookmark(_T("ksai"), S_ksai, 3);
+		conword.ReplaceBookmark(_T("ksaib"), S_kb, 2);
+		conword.ReplaceBookmark(_T("Mu"), S_Mu, 1);
+		conword.ReplaceBookmark(_T("N"), S_n, 4);
+		conword.ReplaceBookmark(_T("Nb"), S_nb, 1);
+		conword.ReplaceBookmark(_T("ST"), m_ST, 1);
+		conword.ReplaceBookmark(_T("x"), S_x, 2);
+	}
+	else if (exportcon == 2)
+	{
+		//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åDPA-FH-XXï¼‰
+		COperateWord conword(g_exePATH, _T("\\templet\\DPY_FH_XX.dot"));
+		if (!conword.IsSuccess())
+		{
+			AfxMessageBox(_T("æœ¬æœºæ²¡æœ‰å®‰è£…wordäº§å“ï¼"));
+			return;
+		}
+		conword.ReplaceBookmark(_T("as"), S_as, 3);
+		conword.ReplaceBookmark(_T("Asp"), S_Asp, 3);
+		conword.ReplaceBookmark(_T("Ast"), S_As, 4);
+		conword.ReplaceBookmark(_T("b"), S_b, 3);
+		conword.ReplaceBookmark(_T("CT"), m_CS, 1);
+		conword.ReplaceBookmark(_T("e0"), S_e0, 2);
+		conword.ReplaceBookmark(_T("e"), S_e, 2);
+		conword.ReplaceBookmark(_T("ea"), S_ea, 2);
+		conword.ReplaceBookmark(_T("ei"), S_ei, 2);
+		conword.ReplaceBookmark(_T("ep"), S_ep, 2);
+		conword.ReplaceBookmark(_T("fc"), S_fc, 3);
+		conword.ReplaceBookmark(_T("fy"), S_fy, 4);
+		conword.ReplaceBookmark(_T("h0"), S_h0, 4);
+		conword.ReplaceBookmark(_T("h"), S_h, 2);
+		conword.ReplaceBookmark(_T("ksai"), S_ksai, 1);
+		conword.ReplaceBookmark(_T("ksaib"), S_kb, 2);
+		conword.ReplaceBookmark(_T("Mu"), S_Mu, 1);
+		conword.ReplaceBookmark(_T("N"), S_n, 4);
+		conword.ReplaceBookmark(_T("Nb"), S_nb, 1);
+		conword.ReplaceBookmark(_T("ST"), m_ST, 1);
+		conword.ReplaceBookmark(_T("x"), S_x, 2);
+	}
+	else
+	{
+		//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åXPA-FH-ZCï¼‰
+
+		COperateWord conword(g_exePATH, _T("\\templet\\XPY_FH_ZC.dot"));
+		if (!conword.IsSuccess())
+		{
+			AfxMessageBox(_T("æœ¬æœºæ²¡æœ‰å®‰è£…wordäº§å“ï¼"));
+			return;
+		}
+		conword.ReplaceBookmark(_T("as"), S_as, 3);
+		conword.ReplaceBookmark(_T("Asp"), S_Asp, 4);
+		conword.ReplaceBookmark(_T("Ast"), S_As, 4);
+		conword.ReplaceBookmark(_T("b"), S_b, 4);
+		conword.ReplaceBookmark(_T("CT"), m_CS, 1);
+		conword.ReplaceBookmark(_T("e0"), S_e0, 2);
+		conword.ReplaceBookmark(_T("e"), S_e, 2);
+		conword.ReplaceBookmark(_T("ea"), S_ea, 2);
+		conword.ReplaceBookmark(_T("ei"), S_ei, 2);
+		conword.ReplaceBookmark(_T("fc"), S_fc, 4);
+		conword.ReplaceBookmark(_T("fy"), S_fy, 6);
+		conword.ReplaceBookmark(_T("h0"), S_h0, 5);
+		conword.ReplaceBookmark(_T("h"), S_h, 2);
+		conword.ReplaceBookmark(_T("ksai"), S_ksai, 2);
+		conword.ReplaceBookmark(_T("ksaib"), S_kb, 4);
+		conword.ReplaceBookmark(_T("ksaicy"), S_ksaicy, 1);
+		conword.ReplaceBookmark(_T("Mu"), S_Mu, 1);
+		conword.ReplaceBookmark(_T("N"), S_n, 4);
+		conword.ReplaceBookmark(_T("Nb"), S_nb, 1);
+		conword.ReplaceBookmark(_T("ST"), m_ST, 1);
+	}
+}
+
+
+BOOL Cpyc::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	// TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
+	TCHAR path[MAX_PATH] = { 0 };
+
+	GetModuleFileName(NULL, path, MAX_PATH);
+
+
+	g_exePATH = path;//æ­¤æ—¶èŽ·å¾—äº†EXEçš„ç›®å½•
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // å¼‚å¸¸: OCX å±žæ€§é¡µåº”è¿”å›ž FALSE
+}
+
+/*
+* // TODO: åœ¨æ­¤æ·»åŠ æŽ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CApplication wordApp;
 	CDocuments docs;
 	CDocument0 docx;
@@ -200,7 +341,7 @@ void Cpyc::OnBnClickedButtonexport()
 	CString temppath;
 	temppath = g_exePATH;
 
-	//¹«¹²×Ö·û
+	//å…¬å…±å­—ç¬¦
 	CString S_b, S_h, S_n, S_Asp, S_As, S_as, S_fc, S_kb, S_fy, S_h0;
 	S_b.Format(_T("%.0lf"), m_B);
 	S_h.Format(_T("%.0lf"), m_H);
@@ -228,21 +369,21 @@ void Cpyc::OnBnClickedButtonexport()
 	if (exportcon == 1)
 	{
 		//--------------------------------------------------------
-		//Êä³ö¼ÆËãÊé£¨¼ÆËãÊéÎÄ¼þÃûDPA-FH-ZC£©
+		//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åDPA-FH-ZCï¼‰
 		temppath.Replace(_T("\\peijin.exe"), _T("\\templet\\DPY_FH_ZC.dot"));
 
-		CoInitialize(NULL);//³õÊ¼»¯COM£¬Óë×îºóÒ»ÐÐCoUninitialize¶ÔÓ¦
-		COleVariant    covZero((short)0),
-			covTrue((short)TRUE),
-			covFalse((short)FALSE),
-			covOptional((long)DISP_E_PARAMNOTFOUND, VT_ERROR),
-			covDocxType((short)0),
-			start_line, end_line,
-			dot(temppath);
+		CoInitialize(NULL);//åˆå§‹åŒ–COMï¼Œä¸Žæœ€åŽä¸€è¡ŒCoUninitializeå¯¹åº”
+		COleVariant covZero((short)0),
+					covTrue((short)TRUE),
+					covFalse((short)FALSE),
+					covOptional((long)DISP_E_PARAMNOTFOUND, VT_ERROR),
+					covDocxType((short)0),
+					start_line, end_line,
+					dot(temppath);
 
 		if (!wordApp.CreateDispatch(_T("Word.Application")))
 		{
-			AfxMessageBox(_T("±¾»úÃ»ÓÐ°²×°word²úÆ·£¡"));
+			AfxMessageBox(_T("æœ¬æœºæ²¡æœ‰å®‰è£…wordäº§å“ï¼"));
 			return;
 		}
 
@@ -446,10 +587,10 @@ void Cpyc::OnBnClickedButtonexport()
 	}
 	else if (exportcon == 2)
 	{
-		//Êä³ö¼ÆËãÊé£¨¼ÆËãÊéÎÄ¼þÃûDPA-FH-XX£©
+		//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åDPA-FH-XXï¼‰
 		temppath.Replace(_T("\\peijin.exe"), _T("\\templet\\DPY_FH_XX.dot"));
 
-		CoInitialize(NULL);//³õÊ¼»¯COM£¬Óë×îºóÒ»ÐÐCoUninitialize¶ÔÓ¦
+		CoInitialize(NULL);//åˆå§‹åŒ–COMï¼Œä¸Žæœ€åŽä¸€è¡ŒCoUninitializeå¯¹åº”
 		COleVariant    covZero((short)0),
 			covTrue((short)TRUE),
 			covFalse((short)FALSE),
@@ -460,7 +601,7 @@ void Cpyc::OnBnClickedButtonexport()
 
 		if (!wordApp.CreateDispatch(_T("Word.Application")))
 		{
-			AfxMessageBox(_T("±¾»úÃ»ÓÐ°²×°word²úÆ·£¡"));
+			AfxMessageBox(_T("æœ¬æœºæ²¡æœ‰å®‰è£…wordäº§å“ï¼"));
 			return;
 		}
 
@@ -632,10 +773,10 @@ void Cpyc::OnBnClickedButtonexport()
 	}
 	else
 	{
-		//Êä³ö¼ÆËãÊé£¨¼ÆËãÊéÎÄ¼þÃûXPA-FH-ZC£©
+		//è¾“å‡ºè®¡ç®—ä¹¦ï¼ˆè®¡ç®—ä¹¦æ–‡ä»¶åXPA-FH-ZCï¼‰
 		temppath.Replace(_T("\\peijin.exe"), _T("\\templet\\XPY_FH_ZC.dot"));
 
-		CoInitialize(NULL);//³õÊ¼»¯COM£¬Óë×îºóÒ»ÐÐCoUninitialize¶ÔÓ¦
+		CoInitialize(NULL);//åˆå§‹åŒ–COMï¼Œä¸Žæœ€åŽä¸€è¡ŒCoUninitializeå¯¹åº”
 		COleVariant    covZero((short)0),
 			covTrue((short)TRUE),
 			covFalse((short)FALSE),
@@ -646,7 +787,7 @@ void Cpyc::OnBnClickedButtonexport()
 
 		if (!wordApp.CreateDispatch(_T("Word.Application")))
 		{
-			AfxMessageBox(_T("±¾»úÃ»ÓÐ°²×°word²úÆ·£¡"));
+			AfxMessageBox(_T("æœ¬æœºæ²¡æœ‰å®‰è£…wordäº§å“ï¼"));
 			return;
 		}
 
@@ -848,21 +989,4 @@ void Cpyc::OnBnClickedButtonexport()
 	docx.ReleaseDispatch();
 	docs.ReleaseDispatch();
 	wordApp.ReleaseDispatch();
-}
-
-
-BOOL Cpyc::OnInitDialog()
-{
-	CDialogEx::OnInitDialog();
-
-	// TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
-	TCHAR path[MAX_PATH] = { 0 };
-
-	GetModuleFileName(NULL, path, MAX_PATH);
-
-
-	g_exePATH = path;//´ËÊ±»ñµÃÁËEXEµÄÄ¿Â¼
-
-	return TRUE;  // return TRUE unless you set the focus to a control
-				  // Òì³£: OCX ÊôÐÔÒ³Ó¦·µ»Ø FALSE
-}
+*/

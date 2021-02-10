@@ -1,4 +1,4 @@
-// Czy.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// Czy.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -7,7 +7,7 @@
 #include "afxdialogex.h"
 
 
-// Czy ¶Ô»°¿ò
+// Czy å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(Czy, CDialogEx)
 
@@ -33,7 +33,7 @@ BEGIN_MESSAGE_MAP(Czy, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// Czy ÏûÏ¢´¦Àí³ÌĞò
+// Czy æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 
 void Czy::OnTcnSelchangeTab1(NMHDR *pNMHDR, LRESULT *pResult)
@@ -79,13 +79,13 @@ BOOL Czy::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	m_tab_zy.InsertItem(0,_T("ÆÕÍ¨¹¿½îÖùÖáÑ¹Éè¼Æ"),0);
-	m_tab_zy.InsertItem(1,_T("ÆÕÍ¨¹¿½îÖùÖáÑ¹¸´ºË"),1);
-	m_tab_zy.InsertItem(2,_T("ÂİĞıĞÎ¹¿½îÖùÖáÑ¹Éè¼Æ"),2);
-	m_tab_zy.InsertItem(3,_T("ÂİĞıĞÎ¹¿½îÖùÖáÑ¹¸´ºË"),3);
+	m_tab_zy.InsertItem(0,_T("æ™®é€šç®ç­‹æŸ±è½´å‹è®¾è®¡"),0);
+	m_tab_zy.InsertItem(1,_T("æ™®é€šç®ç­‹æŸ±è½´å‹å¤æ ¸"),1);
+	m_tab_zy.InsertItem(2,_T("èºæ—‹å½¢ç®ç­‹æŸ±è½´å‹è®¾è®¡"),2);
+	m_tab_zy.InsertItem(3,_T("èºæ—‹å½¢ç®ç­‹æŸ±è½´å‹å¤æ ¸"),3);
 
 
-	zycDlg.Create(IDD_ZYC,&m_tab_zy);//´Ë´¦×¢ÒâÒª¸ü¸Ä³É¶ÔÓ¦¶Ô»°¿òµÄID
+	zycDlg.Create(IDD_ZYC,&m_tab_zy);//æ­¤å¤„æ³¨æ„è¦æ›´æ”¹æˆå¯¹åº”å¯¹è¯æ¡†çš„ID
 	zydDlg.Create(IDD_ZYD,&m_tab_zy);
 	zyydDlg.Create(IDD_ZYYD,&m_tab_zy);
 	zyycDlg.Create(IDD_ZYYC,&m_tab_zy);
@@ -94,13 +94,13 @@ BOOL Czy::OnInitDialog()
 	zydDlg.ShowWindow(SW_SHOW);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
-	// Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+	// å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 
 void Czy::OnOK()
 {
-	MessageBox(_T("ÇëÊäÈë±ØÒª²ÎÊı"));
+	MessageBox(_T("è¯·è¾“å…¥å¿…è¦å‚æ•°"));
 
 	//CDialogEx::OnOK();
 }
